@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib/matrixgen.h"
 #include "lib/matrix.h"
 
 #define INPUT_FILE	"COSC450_P1_Data.txt"
