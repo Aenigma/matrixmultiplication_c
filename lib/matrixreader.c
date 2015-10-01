@@ -4,7 +4,10 @@
 
 #define DEFAULT_BUF_SIZE 512
 
+#ifdef DEBUG
 static void show_arr(long int *arr, int size);
+#endif
+
 static void fill_from(long int *arr, long int **arr_list, int d1, int d2);
 
 static void fill_from(long int *arr, long int **arr_list, int d1, int d2)
@@ -29,6 +32,7 @@ static void fill_from(long int *arr, long int **arr_list, int d1, int d2)
 	}
 }
 
+#ifdef DEBUG
 static void show_arr(long int *arr, int size)
 {
 	int i;
@@ -36,6 +40,7 @@ static void show_arr(long int *arr, int size)
 		printf("%ld\n", arr[i]);
 	}
 }
+#endif
 
 
 static void allocate_ptrptr(long int **arr_list, int d1, int d2)

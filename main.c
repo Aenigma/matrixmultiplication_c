@@ -10,10 +10,17 @@ int main()
 	/** we can now read the file */
 	FILE *fin  = fopen(INPUT_FILE, "r");
 
+	if(fin == NULL) {
+		perror(INPUT_FILE);
+		exit(-1);
+	}
+
 	long int ***mat = NULL;
 	long int **mult_mat = NULL;
 
 	int count = read_2_matrices(fin, &mat);
+	
+	fclose(fin);
 
 	printf("m1: \n");
 	arr_rect_join(mat[0], 5, count/10, "", ", ", "\n");
@@ -24,7 +31,6 @@ int main()
 	matrix_mult(mat[0], mat[1], &mult_mat, 5, count/10, 5);
 	printf("result: \n");
 	arr_rect_join(mult_mat, 5, 5, "", ", ", "\n");
-	printf("printed");
 	
 	return 0;
 }
