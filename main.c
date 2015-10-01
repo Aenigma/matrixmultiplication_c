@@ -23,14 +23,14 @@ int main()
 	fclose(fin);
 
 	printf("m1: \n");
-	arr_rect_join(mat[0], 5, count/10, "", ", ", "\n");
+	arr_rect_join(stdout, mat[0], 5, count/10, "", ", ", "\n");
 	
 	printf("m2: \n");
-	arr_rect_join(mat[1], count/10, 5, "", ", ", "\n");
+	arr_rect_join(stdout, mat[1], count/10, 5, "", ", ", "\n");
 
 	matrix_mult(mat[0], mat[1], &mult_mat, 5, count/10, 5);
 	printf("result: \n");
-	arr_rect_join(mult_mat, 5, 5, "", ", ", "\n");
+	arr_rect_join(stdout, mult_mat, 5, 5, "", ", ", "\n");
 	
 	return 0;
 }

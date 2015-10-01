@@ -50,6 +50,6 @@ extern int read_2_matrices(FILE *fin, long int ****mat);
  * delimiter = show between each element
  * suffic = shown after the output
  */
-extern void arr_rect_join(long int **arr, int d1, int d2, const char* prefix, const char* delimiter, const char* suffix);
+extern void arr_rect_join(FILE* dest, long int **arr, int d1, int d2, const char* prefix, const char* delimiter, const char* suffix);
 
 extern void matrix_mult(long int **m1, long int **m2, long int ***result, int m1_d1, int m1_d2, int m2_d2);
