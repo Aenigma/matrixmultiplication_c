@@ -18,7 +18,7 @@ CFLAGS=-Wall -pedantic -O3 -std=c99
 SO_PREFIX=libmatrix
 LIBS=
 
-CFILES=lib/matrixmult.c lib/matrixreader.c lib/matrixwriter.c main.c
+CFILES=lib/matrixmult.c lib/matrixreader.c lib/matrixwriter.c lib/sort.c main.c
 OBJ=
 
 OUT_DIR=build
