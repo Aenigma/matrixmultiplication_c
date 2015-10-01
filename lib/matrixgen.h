@@ -1,3 +1,9 @@
+#include <stdio.h>
+
+/**
+ * This file defines io and splitting functions to obtain the matrix from file
+ */
+
 /**
  * Reads fin using a long int buffer. A pointer must be passed to the buffer
  * to resize it. The value of size_ptr is also updated according to the
@@ -19,3 +25,29 @@ extern int readldfile(FILE *fin, long int **buffer_ptr, int *size_ptr);
  * return = 0 if successful, else if not
  */
 extern int split_arr(long int *arr, int count, int quotient, long int ***split_arr_list_ptr);
+
+/**
+ * Reads in a file and populats pointer with 2 2D matrices. The dimensions of
+ * the matrix should be obtainable by the function's return value, the count
+ * of values in the file.
+ *
+ * The first matrix should be a 5 by count/10 matrix
+ * The second matrix should be an count/10 by 5 matrix
+ *
+ * fin = input file
+ * mat = a pointer to a 3D matrix of only 2 matrices that will be populated by
+ *	 the file contents
+ */
+extern int read_2_matrices(FILE *fin, long int ****mat);
+
+/**
+ * This function is able to display a rectangular 2D array. That is, a matrix.
+ *
+ * arr = 2d array
+ * d1 = size of its first dimension
+ * d2 = size of its second dimension
+ * prefix = show before the output
+ * delimiter = show between each element
+ * suffic = shown after the output
+ */
+extern void arr_rect_join(long int **arr, int d1, int d2, const char* prefix, const char* delimiter, const char* suffix);
