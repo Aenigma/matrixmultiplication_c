@@ -19,8 +19,14 @@ int main()
 	long int **mult_mat = NULL;
 
 	int count = read_2_matrices(fin, &mat);
+
+	FILE *fout  = fopen(OUTPUT_FILE, "a");
 	
 	fclose(fin);
+	if(fout == NULL) {
+		perror(OUTPUT_FILE);
+		exit(-1);
+	}
 
 	printf("m1: \n");
 	arr_rect_join(stdout, mat[0], 5, count/10, "", ", ", "\n");
@@ -31,6 +37,11 @@ int main()
 	matrix_mult(mat[0], mat[1], &mult_mat, 5, count/10, 5);
 	printf("result: \n");
 	arr_rect_join(stdout, mult_mat, 5, 5, "", ", ", "\n");
+	arr_rect_join(fout, mult_mat, 5, 5, "", ", ", "\n");
+
+	printf("\nResults appended to: %s \n", OUTPUT_FILE);
+
+	fclose(fout);
 	
 	return 0;
 }

@@ -33,3 +33,7 @@
 
 # Build dir
 build/
+
+# input output files
+COSC450_P1_Output.txt
+COSC450_P1_Data.txt
