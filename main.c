@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <getopt.h>
 #include "lib/matrix.h"
 #include "lib/sort.h"
 
 #define ROW 5
 
-#define INPUT_FILE	"COSC450_P1_Data.txt"
-#define OUTPUT_FILE	"COSC450_P1_Output.txt"
+#define DEFAULT_INPUT_FILE	"COSC450_P1_Data.txt"
+#define DEFAULT_OUTPUT_FILE	"COSC450_P1_Output.txt"
 
 static void write_matrix(FILE* dest, const char *label, long int **matrix, int d1, int d2)
 {
@@ -14,14 +15,13 @@ static void write_matrix(FILE* dest, const char *label, long int **matrix, int d
 	arr_rect_join(dest, matrix, d1, d2, "", ", ", "\n\n");
 }
 
-int main()
+static void compute_matrices(const char *input_file, const char *output_file)
 {
-
 	/** we can now read the file */
-	FILE *fin  = fopen(INPUT_FILE, "r");
+	FILE *fin  = fopen(input_file, "r");
 
 	if(fin == NULL) {
-		perror(INPUT_FILE);
+		perror(input_file);
 		exit(-1);
 	}
 
@@ -36,9 +36,9 @@ int main()
 	
 	fclose(fin);
 
-	fout = fopen(OUTPUT_FILE, "w");
+	fout = fopen(output_file, "w");
 	if(fout == NULL) {
-		perror(OUTPUT_FILE);
+		perror(output_file);
 		exit(-1);
 	}
 
@@ -59,7 +59,28 @@ int main()
 	write_matrix(fout, "Sorted Multiplication Result", mult_mat, ROW, ROW);
 
 	fclose(fout);
-	printf("\nResults written to: %s \n", OUTPUT_FILE);
+	printf("Results written to: %s \n", output_file);
+}
+
+int main(int argc, char **argv)
+{
+	int opt;
+
+	const char* input_file = DEFAULT_INPUT_FILE;
+	const char* output_file = DEFAULT_OUTPUT_FILE;
+
+	while((opt = getopt(argc, argv, "i:o:")) != -1) {
+		switch(opt) {
+			case 'i':
+				input_file = optarg;
+				break;
+			case 'o':
+				output_file= optarg;
+				break;
+		}
+	}
+	
+	compute_matrices(input_file, output_file);
 	
 	return 0;
 }
