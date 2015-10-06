@@ -144,6 +144,8 @@ int read_2_matrices(FILE *fin, int row_size, long int ****mat)
 	long int ***mats = NULL;
 
 	int count = readldfile(fin, &buffer, &size);
+	
+	int column_size = count / 2 / row_size;
 
 	if (count%10 != 0) {
 		fputs("# elements in file not divisible by 10; exiting...", stderr);
@@ -156,7 +158,7 @@ int read_2_matrices(FILE *fin, int row_size, long int ****mat)
 
 	// split subarray with count/2 elements into row_size
 	split_arr(tmp_mats[0], count/2, row_size, &mats[0]);
-	split_arr(tmp_mats[1], count/2, count/10, &mats[1]);
+	split_arr(tmp_mats[1], count/2, column_size, &mats[1]);
 
 	*mat = mats;
 

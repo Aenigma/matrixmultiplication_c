@@ -31,8 +31,8 @@ extern int split_arr(long int *arr, int count, int quotient, long int ***split_a
  * the matrix should be obtainable by the function's return value, the count
  * of values in the file.
  *
- * The first matrix should be a row_size by count/10 matrix
- * The second matrix should be an count/10 by row_size matrix
+ * The first matrix should be a row_size by count/2/row_size matrix
+ * The second matrix should be an count/2/row_size by row_size matrix
  *
  * fin = input file
  * row_size = number of elements in each row of the first matrix 

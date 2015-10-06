@@ -30,6 +30,8 @@ int main()
 
 	int count = read_2_matrices(fin, ROW, &mat);
 
+	int column = count / ROW / 2;
+
 	FILE *fout;
 	
 	fclose(fin);
@@ -40,13 +42,13 @@ int main()
 		exit(-1);
 	}
 
-	write_matrix(stdout, "Matrix 1", mat[0], ROW, count/10);
-	write_matrix(fout, "Matrix 1", mat[0], ROW, count/10);
+	write_matrix(stdout, "Matrix 1", mat[0], ROW, column);
+	write_matrix(fout, "Matrix 1", mat[0], ROW, column);
 
-	write_matrix(stdout, "Matrix 2", mat[1], count/10, ROW);
-	write_matrix(fout, "Matrix 2", mat[1], count/10, ROW);
+	write_matrix(stdout, "Matrix 2", mat[1], column, ROW);
+	write_matrix(fout, "Matrix 2", mat[1], column, ROW);
 
-	matrix_mult(mat[0], mat[1], &mult_mat, ROW, count/10, ROW);
+	matrix_mult(mat[0], mat[1], &mult_mat, ROW, column, ROW);
 
 	write_matrix(stdout, "Multiplication Result", mult_mat, ROW, ROW);
 	write_matrix(fout, "Multiplication Result", mult_mat, ROW, ROW);
