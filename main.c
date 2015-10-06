@@ -55,7 +55,7 @@ int main()
 	write_matrix(fout, "Sorted Multiplication Result", mult_mat, 5, 5);
 
 	fclose(fout);
-	printf("\nResults appended to: %s \n", OUTPUT_FILE);
+	printf("\nResults written to: %s \n", OUTPUT_FILE);
 	
 	return 0;
 }
