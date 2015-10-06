@@ -62,6 +62,17 @@ static void compute_matrices(const char *input_file, const char *output_file)
 	printf("Results written to: %s \n", output_file);
 }
 
+static void print_help(int err)
+{
+	puts("-i inputfile\n"
+			"\tif it does not exist, defaults to "
+			DEFAULT_INPUT_FILE);
+	puts("-o outputfile\n"
+			"\tif it does not exist, defaults to "
+			DEFAULT_OUTPUT_FILE);
+	exit(err);
+}
+
 int main(int argc, char **argv)
 {
 	int opt;
@@ -69,7 +80,7 @@ int main(int argc, char **argv)
 	const char* input_file = DEFAULT_INPUT_FILE;
 	const char* output_file = DEFAULT_OUTPUT_FILE;
 
-	while((opt = getopt(argc, argv, "i:o:")) != -1) {
+	while((opt = getopt(argc, argv, "i:o:h")) != -1) {
 		switch(opt) {
 			case 'i':
 				input_file = optarg;
@@ -77,6 +88,10 @@ int main(int argc, char **argv)
 			case 'o':
 				output_file= optarg;
 				break;
+			case 'h':
+				print_help(0);
+			default:
+				print_help(-1);
 		}
 	}
 	
