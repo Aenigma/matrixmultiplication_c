@@ -133,7 +133,7 @@ int split_arr(long int *arr, int count, int quotient, long int ***split_arr_list
 	return 0;
 }
 
-int read_2_matrices(FILE *fin, long int ****mat)
+int read_2_matrices(FILE *fin, int row_size, long int ****mat)
 {
 	/** size of buffer in # of elements */
 	int size = DEFAULT_BUF_SIZE;
@@ -154,8 +154,8 @@ int read_2_matrices(FILE *fin, long int ****mat)
 
 	mats = (long int ***) malloc(2 * sizeof(long int **));
 
-	// split subarray with count/2 elements into 5
-	split_arr(tmp_mats[0], count/2, 5, &mats[0]);
+	// split subarray with count/2 elements into row_size
+	split_arr(tmp_mats[0], count/2, row_size, &mats[0]);
 	split_arr(tmp_mats[1], count/2, count/10, &mats[1]);
 
 	*mat = mats;

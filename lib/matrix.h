@@ -31,14 +31,15 @@ extern int split_arr(long int *arr, int count, int quotient, long int ***split_a
  * the matrix should be obtainable by the function's return value, the count
  * of values in the file.
  *
- * The first matrix should be a 5 by count/10 matrix
- * The second matrix should be an count/10 by 5 matrix
+ * The first matrix should be a row_size by count/10 matrix
+ * The second matrix should be an count/10 by row_size matrix
  *
  * fin = input file
+ * row_size = number of elements in each row of the first matrix 
  * mat = a pointer to a 3D matrix of only 2 matrices that will be populated by
  *	 the file contents
  */
-extern int read_2_matrices(FILE *fin, long int ****mat);
+extern int read_2_matrices(FILE *fin, int row_size, long int ****mat);
 
 /**
  * This function is able to display a rectangular 2D array. That is, a matrix.
